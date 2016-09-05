@@ -84,7 +84,7 @@ t(as_incidence_matrix(bi_graph)) %*% as_incidence_matrix(bi_graph)
 
 #Network Metrics
 
-zach <- read.table("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/zach.txt", quote="\"")
+zach <- read.table("path/zach.txt", quote="\"")
 #for simplicity we have selected 10 rows and 10 columns
 zach1 <- zach[0:10,0:10]
 #assigning the names to the rows and the columns
@@ -161,8 +161,8 @@ reciprocity(g , ignore.loops = TRUE , mode =c("default" ,"ratio"))
 
 
 #Exploring different layouts
-vertex <- read.csv("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/NODES.csv", header=T, as.is=T)
-edge <- read.csv("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/EDGES.csv", header=T, as.is=T)
+vertex <- read.csv("path/NODES.csv", header=T, as.is=T)
+edge <- read.csv("path/EDGES.csv", header=T, as.is=T)
 
 #to reduce the duplicate edge present in the edge dataset
 edge <- aggregate(edge[,3], edge[,-3], sum)
@@ -218,15 +218,15 @@ dev.off()
 
 #adding images to the vertex according to the type
 
-nodes2<- read.csv("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/NODES2.csv",header=T, as.is=T)
-links2<-read.csv("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/EDGES2.csv", header=T, row.names = 1)
+nodes2<- read.csv("path/NODES2.csv",header=T, as.is=T)
+links2<-read.csv("path/EDGES2.csv", header=T, row.names = 1)
 #converting the data frame to matrix
 links2 <- as.matrix(links2)
 net2 <- graph_from_incidence_matrix(links2)
 
 #reading the images
-img.1 <- readPNG("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/newschannel.png")
-img.2 <- readPNG("C:/Users/VISWANATH/Desktop/Aditya/Classwork/R/Project 2/user.png")
+img.1 <- readPNG("path/newschannel.png")
+img.2 <- readPNG("path/user.png")
 
 #assiging the images to different types of vertices present in the incidency matrix from net2
 V(net2)$raster <- list(img.1, img.2)[V(net2)$type+1]
